@@ -38,3 +38,24 @@ Follow these directions to configure a local instance of the application on your
 ```bash
 git clone [https://github.com/vibhayadav2004/Task-Manager-Application.git](https://github.com/vibhayadav2004/Task-Manager-Application.git)
 cd Task-Manager-Application
+
+
+
+
+
+
+
+
+
+### 🗄️ Database Schema Preview (Task Model)
+
+Below is the Mongoose schema structured to manage tasks securely while mapping them natively to specific authenticated users:
+
+```javascript
+const taskSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String },
+  status: { type: String, enum: ['To Do', 'In Progress', 'Completed'], default: 'To Do' },
+  dueDate: { type: Date },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+}, { timestamps: true });
